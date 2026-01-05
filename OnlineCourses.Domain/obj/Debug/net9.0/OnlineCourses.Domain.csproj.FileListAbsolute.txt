@@ -1,0 +1,11 @@
+/home/cami/Documentos/Proof/OnlineCourses.Domain/bin/Debug/net9.0/OnlineCourses.Domain.deps.json
+/home/cami/Documentos/Proof/OnlineCourses.Domain/bin/Debug/net9.0/OnlineCourses.Domain.dll
+/home/cami/Documentos/Proof/OnlineCourses.Domain/bin/Debug/net9.0/OnlineCourses.Domain.pdb
+/home/cami/Documentos/Proof/OnlineCourses.Domain/obj/Debug/net9.0/OnlineCourses.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/cami/Documentos/Proof/OnlineCourses.Domain/obj/Debug/net9.0/OnlineCourses.Domain.AssemblyInfoInputs.cache
+/home/cami/Documentos/Proof/OnlineCourses.Domain/obj/Debug/net9.0/OnlineCourses.Domain.AssemblyInfo.cs
+/home/cami/Documentos/Proof/OnlineCourses.Domain/obj/Debug/net9.0/OnlineCourses.Domain.csproj.CoreCompileInputs.cache
+/home/cami/Documentos/Proof/OnlineCourses.Domain/obj/Debug/net9.0/OnlineCourses.Domain.dll
+/home/cami/Documentos/Proof/OnlineCourses.Domain/obj/Debug/net9.0/refint/OnlineCourses.Domain.dll
+/home/cami/Documentos/Proof/OnlineCourses.Domain/obj/Debug/net9.0/OnlineCourses.Domain.pdb
+/home/cami/Documentos/Proof/OnlineCourses.Domain/obj/Debug/net9.0/ref/OnlineCourses.Domain.dll
