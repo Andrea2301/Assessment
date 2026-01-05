@@ -91,4 +91,11 @@ public class ApiClient
         var response = await _http.DeleteAsync(url);
         return response.IsSuccessStatusCode;
     }
+    
+    public async Task<bool> PostAsync<TRequest>(string url, TRequest body)
+    {
+        var response = await _http.PostAsJsonAsync(url, body);
+        return response.IsSuccessStatusCode;
+    }
+
 }
