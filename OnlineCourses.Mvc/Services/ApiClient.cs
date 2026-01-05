@@ -85,6 +85,17 @@ public class ApiClient
             PropertyNameCaseInsensitive = true
         });
     }
+    public async Task<bool> PatchAsync<TRequest>(string url, TRequest body)
+    {
+        var request = new HttpRequestMessage(new HttpMethod("PATCH"), url)
+        {
+            Content = JsonContent.Create(body)
+        };
+
+        var response = await _http.SendAsync(request);
+        return response.IsSuccessStatusCode;
+    }
+
 
     public async Task<bool> DeleteAsync(string url)
     {

@@ -5,14 +5,47 @@
 <form asp-action="Create" method="post">
     @Html.AntiForgeryToken()
 
+    <!-- TITLE -->
     <div class="mb-3">
         <label asp-for="Title" class="form-label">Title</label>
-        <input asp-for="Title" class="form-control" placeholder="Ej: Curso de C#" />
+        <input asp-for="Title" class="form-control" placeholder="e.g. C# Fundamentals" />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
+    <!-- DESCRIPTION -->
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <textarea asp-for="Description"
+                  class="form-control"
+                  rows="3"
+                  placeholder="Brief description of the course"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <!-- CATEGORY -->
+    <div class="mb-3">
+        <label asp-for="Category" class="form-label">Category</label>
+        <input asp-for="Category"
+               class="form-control"
+               placeholder="e.g. Backend, Frontend, DevOps" />
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <!-- LEVEL -->
+    <div class="mb-3">
+        <label asp-for="Level" class="form-label">Level</label>
+        <select asp-for="Level" class="form-select">
+            <option value="">-- Select level --</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+        <span asp-validation-for="Level" class="text-danger"></span>
+    </div>
+
+    <!-- ACTIONS -->
     <button type="submit" class="btn btn-primary">
-        <i class="fas fa-plus"></i> Create 
+        <i class="fas fa-plus"></i> Create
     </button>
 
     <a asp-action="Index" class="btn btn-secondary ms-2">
