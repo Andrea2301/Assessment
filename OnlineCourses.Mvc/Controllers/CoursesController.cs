@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using OnlineCourses.Domain.Entities;
 using OnlineCourses.Mvc.Models;
 using OnlineCourses.Mvc.Services;
 
@@ -56,7 +57,7 @@ public class CoursesController : Controller
         return RedirectToAction(nameof(Index));
     }
     
-    // ✅ GET: Courses/Edit/5
+    //  GET: Courses/Edit/5
     [HttpGet]
     public async Task<IActionResult> Edit(Guid id)
     {
@@ -67,7 +68,7 @@ public class CoursesController : Controller
         return View(course);
     }
 
-    // ✅ POST: Courses/Edit/5
+    //  POST: Courses/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(Guid id, CourseViewModel model)
@@ -84,18 +85,20 @@ public class CoursesController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> ToggleStatus(Guid id)
+    public async Task<IActionResult> ToggleStatus(Guid id, CourseStatus status)
     {
         var token = HttpContext.Session.GetString("token");
         _api.SetToken(token!);
 
-        await _api.PutAsync<object, object>(
-            $"courses/{id}/toggle-status",
-            new { }
-        );
+        var endpoint = status == CourseStatus.Published
+            ? $"courses/{id}/unpublish"
+            : $"courses/{id}/publish";
+
+        await _api.PatchAsync(endpoint, new { });
 
         return RedirectToAction(nameof(Index));
     }
+
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -107,4 +110,5 @@ public class CoursesController : Controller
         await _api.DeleteAsync($"courses/{id}");
         return RedirectToAction(nameof(Index));
     }
+    
 }

@@ -48,10 +48,15 @@ public class CoursesController : ControllerBase
         var course = new Course
         {
             Id = Guid.NewGuid(),
-            Title = dto.Title,
-            Status = CourseStatus.Draft,
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow
+                Title = dto.Title,
+                Description = dto.Description,
+                Level = dto.Level,
+                Category = dto.Category,
+            
+                Status = CourseStatus.Draft,
+                IsDeleted = false,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
         };
 
         await _context.Courses.AddAsync(course);
@@ -68,6 +73,9 @@ public class CoursesController : ControllerBase
         if (course == null) return NotFound();
 
         course.Title = dto.Title;
+        course.Description = dto.Description;
+        course.Level = dto.Level;
+        course.Category = dto.Category;
         course.UpdatedAt = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();
