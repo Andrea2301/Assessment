@@ -2551,35 +2551,42 @@
     ]
   },
   "packageFolders": {
-    "/home/cami/.nuget/packages/": {}
+    "C:\\Users\\camil\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/cami/Documentos/Proof/OnlineCourses.Infrastructure/OnlineCourses.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Infrastructure\\OnlineCourses.Infrastructure.csproj",
       "projectName": "OnlineCourses.Infrastructure",
-      "projectPath": "/home/cami/Documentos/Proof/OnlineCourses.Infrastructure/OnlineCourses.Infrastructure.csproj",
-      "packagesPath": "/home/cami/.nuget/packages/",
-      "outputPath": "/home/cami/Documentos/Proof/OnlineCourses.Infrastructure/obj/",
+      "projectPath": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Infrastructure\\OnlineCourses.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\camil\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/cami/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\camil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/home/cami/Documentos/Proof/OnlineCourses.Application/OnlineCourses.Application.csproj": {
-              "projectPath": "/home/cami/Documentos/Proof/OnlineCourses.Application/OnlineCourses.Application.csproj"
+            "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Application\\OnlineCourses.Application.csproj": {
+              "projectPath": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Application\\OnlineCourses.Application.csproj"
             },
-            "/home/cami/Documentos/Proof/OnlineCourses.Domain/OnlineCourses.Domain.csproj": {
-              "projectPath": "/home/cami/Documentos/Proof/OnlineCourses.Domain/OnlineCourses.Domain.csproj"
+            "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Domain\\OnlineCourses.Domain.csproj": {
+              "projectPath": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Domain\\OnlineCourses.Domain.csproj"
             }
           }
         }
@@ -2594,7 +2601,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -2638,7 +2645,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

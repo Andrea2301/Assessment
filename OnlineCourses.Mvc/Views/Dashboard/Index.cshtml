@@ -1,56 +1,106 @@
 @{
-ViewBag.Title = "Dashboard";
+    Layout = null;  // Evita que se renderice el layout principal
+    ViewBag.Title = "Dashboard";
 }
 
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - OnlineCourses.Mvc</title>
 
-<style>
-    .app-layout {
-        display: flex;
-        min-height: 100vh;
-    }
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
-    .sidebar {
-        width: 260px;
-        background-color: #1f2937;
-        color: #fff;
-        padding: 1.5rem;
-    }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    .sidebar .logo {
-        font-size: 1.4rem;
-        font-weight: bold;
-        margin-bottom: 2rem;
-    }
+    <style>
+        /* LAYOUT GENERAL */
+        .app-layout {
+            display: flex;
+            min-height: 100vh;
+        }
 
-    .sidebar a {
-        color: #d1d5db;
-        display: block;
-        padding: 0.6rem 0.8rem;
-        border-radius: 6px;
-    }
+        /* SIDEBAR */
+        .sidebar {
+            width: 260px;
+            background-color: #1f2937;
+            color: #fff;
+            padding: 1.5rem;
+        }
 
-    .sidebar a:hover,
-    .sidebar a.is-active {
-        background-color: #374151;
-        color: #fff;
-    }
+        .sidebar .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
 
-    .content-area {
-        flex: 1;
-        padding: 2rem;
-        background: #f9fafb;
-    }
-</style>
+        .sidebar a {
+            color: #d1d5db;
+            display: block;
+            padding: 0.6rem 0.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.is-active {
+            background-color: #374151;
+            color: #fff;
+        }
+
+        /* CONTENT AREA */
+        .content-area {
+            flex: 1;
+            padding: 2rem;
+            background: #f9fafb;
+        }
+
+        /* Boxes de estadísticas */
+        .box {
+            background-color: #fff;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 5px rgba(0,0,0,0.05);
+        }
+
+        .columns {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        .heading {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .buttons .button {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
 
 <div class="app-layout">
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="logo">
-            <i class="fas fa-graduation-cap"></i>
-            OnlineCourses
+            <i class="fas fa-graduation-cap"></i> OnlineCourses
         </div>
 
         <p class="menu-label">General</p>
@@ -104,10 +154,10 @@ ViewBag.Title = "Dashboard";
         <div class="box">
             <h2 class="subtitle">Acciones rápidas</h2>
             <div class="buttons">
-                <a href="@Url.Action("Create", "Courses")" class="button is-primary">
+                <a href="@Url.Action("Create", "Courses")" class="btn btn-primary">
                     <i class="fas fa-plus mr-2"></i> Nuevo Curso
                 </a>
-                <a href="@Url.Action("Index", "Courses")" class="button is-info">
+                <a href="@Url.Action("Index", "Courses")" class="btn btn-info">
                     <i class="fas fa-list mr-2"></i> Ver Cursos
                 </a>
             </div>
@@ -117,15 +167,19 @@ ViewBag.Title = "Dashboard";
         <div class="box">
             <h2 class="subtitle">Cursos recientes</h2>
             <div id="recentCourses">
-                <button class="button is-loading is-white"></button>
+                <button class="btn btn-light" disabled>Loading...</button>
             </div>
         </div>
 
     </main>
 </div>
 
-@section Scripts {
+<!-- SCRIPTS -->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     window.addEventListener('DOMContentLoaded', loadDashboardData);
 </script>
-}
+
+</body>
+</html>

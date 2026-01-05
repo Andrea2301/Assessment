@@ -19,4 +19,8 @@
     <Folder Include="Pages\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineCourses.Domain\OnlineCourses.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

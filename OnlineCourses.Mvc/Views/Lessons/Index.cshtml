@@ -1,6 +1,126 @@
+@model List<OnlineCourses.Mvc.Models.LessonViewModel>
 @{
-    ViewData["Title"] = "Lessons Index";
+    var courseId = ViewBag.CourseId as Guid? ?? Guid.Empty;
 }
 
-<h1>Lessons Index</h1>
-<p>Bienvenido a la lista de lecciones.</p>
+<h2>Lecciones</h2>
+
+<button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#createLessonModal">
+    Nueva Lección
+</button>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No hay lecciones.</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Orden</th>
+                <th>Título</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var l in Model)
+            {
+                <tr>
+                    <td>@l.Order</td>
+                    <td>@l.Title</td>
+                    <td>
+                        <!-- Mover -->
+                        <form asp-action="Move" method="post" class="d-inline">
+                            <input type="hidden" name="courseId" value="@courseId" />
+                            <input type="hidden" name="id" value="@l.Id" />
+                            <input type="hidden" name="up" value="true" />
+                            <button class="btn btn-sm btn-secondary">↑</button>
+                        </form>
+                        <form asp-action="Move" method="post" class="d-inline">
+                            <input type="hidden" name="courseId" value="@courseId" />
+                            <input type="hidden" name="id" value="@l.Id" />
+                            <input type="hidden" name="up" value="false" />
+                            <button class="btn btn-sm btn-secondary">↓</button>
+                        </form>
+
+                        <!-- Editar -->
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editLessonModal-@l.Id">
+                            Editar
+                        </button>
+
+                        <!-- Eliminar -->
+                        <form asp-action="Delete" method="post" class="d-inline">
+                            <input type="hidden" name="courseId" value="@courseId" />
+                            <input type="hidden" name="id" value="@l.Id" />
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+
+                <!-- Modal Editar -->
+                <div class="modal fade" id="editLessonModal-@l.Id" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form asp-action="CreateOrEdit" method="post">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Editar Lección</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" name="Id" value="@l.Id" />
+                                    <input type="hidden" name="CourseId" value="@courseId" />
+
+                                    <div class="mb-3">
+                                        <label>Título</label>
+                                        <input type="text" name="Title" value="@l.Title" class="form-control" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label>Orden</label>
+                                        <input type="number" name="Order" value="@l.Order" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success">Guardar</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </tbody>
+    </table>
+}
+
+<!-- Modal Crear -->
+<div class="modal fade" id="createLessonModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="CreateOrEdit" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nueva Lección</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="CourseId" value="@courseId" />
+
+                    <div class="mb-3">
+                        <label>Título</label>
+                        <input type="text" name="Title" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Orden</label>
+                        <input type="number" name="Order" class="form-control" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success">Crear</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

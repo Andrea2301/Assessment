@@ -1,7 +1,6 @@
 # Online Courses Platform — Technical Assessment
 
 [![.NET](https://img.shields.io/badge/.NET-8-blue)](https://dotnet.microsoft.com/)
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Status](https://img.shields.io/badge/status-Completed-success)]()
 
 ## Overview

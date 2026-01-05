@@ -1,10 +1,93 @@
+@using OnlineCourses.Domain.Entities
 @model List<CourseViewModel>
 
-<h2>Courses</h2>
+<h2 class="mb-4">Cursos</h2>
 
-<ul>
-    @foreach (var c in Model)
-    {
-        <li>@c.Title - @c.Status</li>
-    }
-</ul>
+<!-- FILTRO POR ESTADO -->
+<form method="get" class="row mb-4">
+    <div class="col-md-3">
+        <select name="status" class="form-select">
+            <option value="">Todos</option>
+            <option value="0">Borrador</option>
+            <option value="1">Publicado</option>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <button class="btn btn-primary">Filtrar</button>
+        <a asp-action="Index" class="btn btn-outline-secondary ms-2">
+            Limpiar
+        </a>
+    </div>
+
+    <div class="col-md-6 text-end">
+        <a asp-action="Create" class="btn btn-success">
+            + Nuevo curso
+        </a>
+    </div>
+</form>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No hay cursos registrados.
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var c in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+
+                        <h5 class="card-title">@c.Title</h5>
+
+                        <!-- ESTADO -->
+                        <span class="badge mb-3
+                            @(c.Status == CourseStatus.Published 
+                                ? "bg-success" 
+                                : "bg-secondary")">
+                            @(c.Status == CourseStatus.Published 
+                                ? "Publicado" 
+                                : "Borrador")
+                        </span>
+
+                        <div class="mt-auto d-flex gap-2">
+
+                            <!-- EDITAR -->
+                            <a asp-action="Edit"
+                               asp-route-id="@c.Id"
+                               class="btn btn-sm btn-primary">
+                                Editar
+                            </a>
+
+                            <!-- PUBLICAR / DESPUBLICAR -->
+                            <form asp-action="ToggleStatus"
+                                  asp-route-id="@c.Id"
+                                  method="post">
+                                <button class="btn btn-sm btn-warning">
+                                    @(c.Status == CourseStatus.Published
+                                        ? "Despublicar"
+                                        : "Publicar")
+                                </button>
+                            </form>
+
+                            <!-- ELIMINAR -->
+                            <form asp-action="Delete"
+                                  asp-route-id="@c.Id"
+                                  method="post"
+                                  onsubmit="return confirm('¿Eliminar este curso?');">
+                                <button class="btn btn-sm btn-danger">
+                                    Eliminar
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
