@@ -1,0 +1,10 @@
+@model List<CourseViewModel>
+
+<h2>Courses</h2>
+
+<ul>
+    @foreach (var c in Model)
+    {
+        <li>@c.Title - @c.Status</li>
+    }
+</ul>

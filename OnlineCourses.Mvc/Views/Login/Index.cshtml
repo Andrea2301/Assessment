@@ -1,0 +1,173 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - Sistema de Cursos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero.is-fullheight {
+            background: white;
+        }
+        .login-card {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-5-tablet is-4-desktop">
+                        <div class="box login-card">
+                            <div class="has-text-centered mb-5">
+                                <h1 class="title is-3">
+                                    <span class="icon-text">
+                                        <span class="icon has-text-primary">
+                                            <i class="fas fa-graduation-cap fa-2x"></i>
+                                        </span>
+                                    </span>
+                                </h1>
+                                <h2 class="title is-4">Iniciar Sesión</h2>
+                                <p class="subtitle is-6">Sistema de Gestión de Cursos</p>
+                            </div>
+
+                            <form id="loginForm">
+                                <!-- Email/Username -->
+                                <div class="field">
+                                    <label class="label">Email o Usuario</label>
+                                    <div class="control has-icons-left">
+                                        <input class="input" type="text" id="email" name="email" 
+                                               placeholder="tu@email.com" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                    </div>
+                                    <p class="help is-danger" id="emailError" style="display: none;"></p>
+                                </div>
+
+                                <!-- Password -->
+                                <div class="field">
+                                    <label class="label">Contraseña</label>
+                                    <div class="control has-icons-left">
+                                        <input class="input" type="password" id="password" name="password" 
+                                               placeholder="••••••••" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                    </div>
+                                    <p class="help is-danger" id="passwordError" style="display: none;"></p>
+                                </div>
+
+                                <!-- Error general -->
+                                <div class="notification is-danger" id="generalError" style="display: none;">
+                                    <button class="delete" onclick="document.getElementById('generalError').style.display='none'"></button>
+                                    <span id="generalErrorText"></span>
+                                </div>
+
+                                <!-- Botón submit -->
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-primary is-fullwidth" type="submit" id="loginBtn">
+                                            <span class="icon">
+                                                <i class="fas fa-sign-in-alt"></i>
+                                            </span>
+                                            <span>Iniciar Sesión</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <hr>
+                            <p class="has-text-centered">
+                                <small>¿No tienes cuenta? <a href="@Url.Action("Index", "Register")">Regístrate aquí</a></small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const API_URL = 'http://localhost:5238/api';
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Limpiar errores previos
+            document.querySelectorAll('.help.is-danger').forEach(el => el.style.display = 'none');
+            document.getElementById('generalError').style.display = 'none';
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            
+            // Validaciones frontend
+            let hasErrors = false;
+            
+            if (!email) {
+                showError('emailError', 'El email o usuario es obligatorio');
+                hasErrors = true;
+            }
+            
+            if (!password || password.length < 3) {
+                showError('passwordError', 'La contraseña debe tener al menos 3 caracteres');
+                hasErrors = true;
+            }
+            
+            if (hasErrors) return;
+            
+            // Deshabilitar botón y mostrar loading
+            const loginBtn = document.getElementById('loginBtn');
+            loginBtn.classList.add('is-loading');
+            loginBtn.disabled = true;
+            
+            try {
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    // Guardar token en localStorage
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify({ email }));
+                    
+                    // Redirigir al dashboard
+                    window.location.href = '@Url.Action("Index", "Dashboard")';
+                } else {
+                    const errorText = await response.text();
+                    showGeneralError(errorText || 'Credenciales inválidas');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showGeneralError('Error al conectar con el servidor. Verifica tu conexión.');
+            } finally {
+                loginBtn.classList.remove('is-loading');
+                loginBtn.disabled = false;
+            }
+        });
+        
+        function showError(elementId, message) {
+            const errorEl = document.getElementById(elementId);
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+        }
+        
+        function showGeneralError(message) {
+            document.getElementById('generalErrorText').textContent = message;
+            document.getElementById('generalError').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

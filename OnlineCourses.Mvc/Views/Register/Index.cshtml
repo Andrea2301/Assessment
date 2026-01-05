@@ -1,0 +1,146 @@
+@{
+Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registrarse - Sistema de Cursos</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .hero.is-fullheight { background: white; }
+        .register-card { box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    </style>
+</head>
+
+<body>
+<section class="hero is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-5-tablet is-4-desktop">
+                    <div class="box register-card">
+
+                        <div class="has-text-centered mb-5">
+                            <h1 class="title is-3">
+                                <i class="fas fa-graduation-cap has-text-primary fa-2x"></i>
+                            </h1>
+                            <h2 class="title is-4">Crear Cuenta</h2>
+                            <p class="subtitle is-6">Sistema de Gestión de Cursos</p>
+                        </div>
+
+                        <!-- MENSAJE ÉXITO -->
+                        <div class="notification is-success" id="successMsg" style="display:none;">
+                            Cuenta creada correctamente. Redirigiendo...
+                        </div>
+
+                        <!--  ERROR GENERAL -->
+                        <div class="notification is-danger" id="generalError" style="display:none;">
+                            <span id="generalErrorText"></span>
+                        </div>
+
+                        <form id="registerForm">
+
+                            <!-- Email -->
+                            <div class="field">
+                                <label class="label">Email</label>
+                                <div class="control has-icons-left">
+                                    <input class="input" type="email" id="email" required>
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="field">
+                                <label class="label">Contraseña</label>
+                                <div class="control has-icons-left">
+                                    <input class="input" type="password" id="password" required>
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <button class="button is-primary is-fullwidth" type="submit">
+                                <i class="fas fa-user-plus mr-2"></i> Registrarse
+                            </button>
+                        </form>
+
+                        <hr>
+                        <p class="has-text-centered">
+                            <small>
+                                ¿Ya tienes cuenta?
+                                <a href="@Url.Action("Index", "Login")">Inicia sesión</a>
+                            </small>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const API_URL = 'http://localhost:5238/api';
+
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // 🔒 Obtener inputs de forma segura
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+
+        if (!emailInput || !passwordInput) {
+            console.error('Inputs no encontrados');
+            return;
+        }
+
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+
+        if (!email || !password) {
+            showError('Email y contraseña son obligatorios');
+            return;
+        }
+
+        try {
+            const response = await fetch(`${API_URL}/auth/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (response.ok) {
+                //  REGISTRO EXITOSO
+                document.getElementById('successMsg').style.display = 'block';
+
+                setTimeout(() => {
+                    window.location.href = '@Url.Action("Index", "Login")';
+                }, 1500);
+            }
+            else {
+                const error = await response.text();
+                showError(error || 'Error al registrar');
+            }
+
+        } catch {
+            showError('No se pudo conectar con el servidor');
+        }
+    });
+
+    function showError(message) {
+        document.getElementById('generalErrorText').textContent = message;
+        document.getElementById('generalError').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

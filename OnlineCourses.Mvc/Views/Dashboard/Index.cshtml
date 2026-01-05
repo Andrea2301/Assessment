@@ -1,0 +1,131 @@
+@{
+ViewBag.Title = "Dashboard";
+}
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    .app-layout {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    .sidebar {
+        width: 260px;
+        background-color: #1f2937;
+        color: #fff;
+        padding: 1.5rem;
+    }
+
+    .sidebar .logo {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
+
+    .sidebar a {
+        color: #d1d5db;
+        display: block;
+        padding: 0.6rem 0.8rem;
+        border-radius: 6px;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.is-active {
+        background-color: #374151;
+        color: #fff;
+    }
+
+    .content-area {
+        flex: 1;
+        padding: 2rem;
+        background: #f9fafb;
+    }
+</style>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            OnlineCourses
+        </div>
+
+        <p class="menu-label">General</p>
+        <a class="is-active">
+            <i class="fas fa-chart-line mr-2"></i> Dashboard
+        </a>
+
+        <p class="menu-label mt-4">Cursos</p>
+        <a href="@Url.Action("Index", "Courses")">
+            <i class="fas fa-book mr-2"></i> Ver Cursos
+        </a>
+        <a href="@Url.Action("Create", "Courses")">
+            <i class="fas fa-plus mr-2"></i> Crear Curso
+        </a>
+
+        <p class="menu-label mt-4">Lecciones</p>
+        <a href="@Url.Action("Index", "Lessons")">
+            <i class="fas fa-list mr-2"></i> Todas las Lecciones
+        </a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content-area">
+
+        <h1 class="title">Dashboard</h1>
+        <p class="subtitle">Bienvenido al Sistema de Gestión de Cursos</p>
+
+        <!-- ESTADÍSTICAS -->
+        <div class="columns">
+            <div class="column">
+                <div class="box has-background-info-light">
+                    <p class="heading">Total Cursos</p>
+                    <p class="title" id="totalCourses">0</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="box has-background-success-light">
+                    <p class="heading">Publicados</p>
+                    <p class="title" id="publishedCourses">0</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="box has-background-warning-light">
+                    <p class="heading">Borradores</p>
+                    <p class="title" id="draftCourses">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACCIONES -->
+        <div class="box">
+            <h2 class="subtitle">Acciones rápidas</h2>
+            <div class="buttons">
+                <a href="@Url.Action("Create", "Courses")" class="button is-primary">
+                    <i class="fas fa-plus mr-2"></i> Nuevo Curso
+                </a>
+                <a href="@Url.Action("Index", "Courses")" class="button is-info">
+                    <i class="fas fa-list mr-2"></i> Ver Cursos
+                </a>
+            </div>
+        </div>
+
+        <!-- CURSOS RECIENTES -->
+        <div class="box">
+            <h2 class="subtitle">Cursos recientes</h2>
+            <div id="recentCourses">
+                <button class="button is-loading is-white"></button>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+@section Scripts {
+<script>
+    window.addEventListener('DOMContentLoaded', loadDashboardData);
+</script>
+}
