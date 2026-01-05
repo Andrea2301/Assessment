@@ -374,3 +374,4 @@ C:\Users\camil\RiderProjects\Assessment\OnlineCourses.Mvc\obj\Debug\net9.0\refin
 C:\Users\camil\RiderProjects\Assessment\OnlineCourses.Mvc\obj\Debug\net9.0\OnlineCourses.Mvc.pdb
 C:\Users\camil\RiderProjects\Assessment\OnlineCourses.Mvc\obj\Debug\net9.0\OnlineCourses.Mvc.genruntimeconfig.cache
 C:\Users\camil\RiderProjects\Assessment\OnlineCourses.Mvc\obj\Debug\net9.0\ref\OnlineCourses.Mvc.dll
+C:\Users\camil\RiderProjects\Assessment\OnlineCourses.Mvc\obj\Debug\net9.0\compressed\xecqx4fq08-1xu6k6rbh7.gz

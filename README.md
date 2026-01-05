@@ -94,13 +94,17 @@ cd Assessment/OnlineCourses.Infrastructure
 4. Create the initial migration:
 
 ```bash
-dotnet ef migrations add InitialCreate --startup-project ../OnlineCourses.Api
+dotnet ef migrations add Last `
+  --startup-project ../OnlineCourses.Api
+
 ```
 
 5. Apply database migrations:
 
 ```bash
-dotnet ef database update --startup-project ../OnlineCourses.Api
+dotnet ef database update `
+  --startup-project ../OnlineCourses.Api
+
 ```
 
 6. Navigate to the API project directory:

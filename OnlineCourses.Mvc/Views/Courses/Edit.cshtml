@@ -1,0 +1,16 @@
+﻿@model CourseViewModel
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <!-- Otros campos... -->
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
