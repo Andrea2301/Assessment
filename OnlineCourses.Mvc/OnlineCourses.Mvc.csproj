@@ -23,4 +23,8 @@
     <ProjectReference Include="..\OnlineCourses.Domain\OnlineCourses.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\undraw_online-test_cqv0.svg" />
+  </ItemGroup>
+
 </Project>

@@ -1,8 +1,409 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = null;  // Evita que se renderice el layout principal
+    ViewBag.Title = "Home";
 }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos Online - Aprende a tu Ritmo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+        }
+        .hero-image {
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .icon-wrapper {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .stats-section {
+            background: linear-gradient(135deg, #00d1b2 0%, #23d160 100%);
+            padding: 3rem 0;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+        }
+        footer {
+            margin-top: 3rem;
+        }
+        .course-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar is-white" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <span class="icon-text">
+                        <span class="icon has-text-primary">
+                            <i class="fas fa-graduation-cap fa-2x"></i>
+                        </span>
+                        <span class="title is-4 ml-2">Cursos Online</span>
+                    </span>
+                </a>
+            </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a href="../Login" class="button is-light">
+                                <span class="icon">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                </span>
+                                <span>Login</span>
+                            </a>
+                            <a href="../Register" class="button is-primary">
+                                <span class="icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </span>
+                                <span>Register</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero is-medium is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-vcentered">
+                    <div class="column is-6">
+                        <h1 class="title is-1 has-text-primary">
+                            Aprende sin Límites
+                        </h1>
+                        <p class="subtitle is-4 has-text-dark">
+                            Miles de cursos online para transformar tu carrera. Aprende programación, diseño, negocios y mucho más a tu propio ritmo.
+                        </p>
+                        <div class="buttons">
+                            <a href="#courses" class="button is-light is-medium">
+                                <span class="icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </span>
+                                <span>Ver Cursos</span>
+                            </a>
+                            <a href="#" class="button is-light is-medium is-outlined">
+                                <span>Prueba Gratis</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <figure class="image">
+                            <img src="undraw_online-test_cqv0.svg" 
+                                 alt="Estudiantes aprendiendo online" 
+                                 class="hero-image">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="columns has-text-centered">
+                <div class="column">
+                    <p class="stat-number">5,000+</p>
+                    <p class="has-text-white is-size-5">Cursos Disponibles</p>
+                </div>
+                <div class="column">
+                    <p class="stat-number">100K+</p>
+                    <p class="has-text-white is-size-5">Estudiantes Activos</p>
+                </div>
+                <div class="column">
+                    <p class="stat-number">500+</p>
+                    <p class="has-text-white is-size-5">Instructores Expertos</p>
+                </div>
+                <div class="column">
+                    <p class="stat-number">4.8★</p>
+                    <p class="has-text-white is-size-5">Calificación Promedio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="section" id="courses">
+        <div class="container">
+            <div class="has-text-centered mb-6">
+                <h2 class="title is-2">Categorías Populares</h2>
+                <p class="subtitle is-5 has-text-grey">Explora nuestros cursos más demandados</p>
+            </div>
+
+            <div class="columns is-multiline">
+                <!-- Card 1 - Programación -->
+                <div class="column is-4">
+                    <div class="card">
+                        <div class="card-content has-text-centered">
+                            <div class="icon-wrapper has-text-primary">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <span class="course-badge has-background-primary has-text-white">MÁS POPULAR</span>
+                            <h3 class="title is-4">Programación & Desarrollo</h3>
+                            <p class="content">
+                                Domina lenguajes como Python, JavaScript, C# y frameworks modernos. Desde nivel básico hasta avanzado con proyectos reales.
+                            </p>
+                            <p class="has-text-grey">
+                                <strong>850+ cursos</strong> | Desde principiante
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 - Diseño -->
+                <div class="column is-4">
+                    <div class="card">
+                        <div class="card-content has-text-centered">
+                            <div class="icon-wrapper has-text-info">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <span class="course-badge has-background-info has-text-white">TRENDING</span>
+                            <h3 class="title is-4">Diseño & Creatividad</h3>
+                            <p class="content">
+                                Aprende diseño gráfico, UX/UI, edición de video y animación. Herramientas como Adobe, Figma y más con instructores profesionales.
+                            </p>
+                            <p class="has-text-grey">
+                                <strong>620+ cursos</strong> | Proyectos prácticos
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 - Negocios -->
+                <div class="column is-4">
+                    <div class="card">
+                        <div class="card-content has-text-centered">
+                            <div class="icon-wrapper has-text-success">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <span class="course-badge has-background-success has-text-white">NUEVO</span>
+                            <h3 class="title is-4">Negocios & Marketing</h3>
+                            <p class="content">
+                                Estrategias de marketing digital, emprendimiento, gestión de proyectos y liderazgo. Impulsa tu carrera profesional.
+                            </p>
+                            <p class="has-text-grey">
+                                <strong>730+ cursos</strong> | Certificados incluidos
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 - Data Science -->
+                <div class="column is-4">
+                    <div class="card">
+                        <div class="card-content has-text-centered">
+                            <div class="icon-wrapper has-text-warning">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="title is-4">Data Science & IA</h3>
+                            <p class="content">
+                                Análisis de datos, machine learning, inteligencia artificial y big data. Conviértete en un profesional altamente demandado.
+                            </p>
+                            <p class="has-text-grey">
+                                <strong>450+ cursos</strong> | Alta demanda laboral
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 - Idiomas -->
+                <div class="column is-4">
+                    <div class="card">
+                        <div class="card-content has-text-centered">
+                            <div class="icon-wrapper has-text-danger">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h3 class="title is-4">Idiomas</h3>
+                            <p class="content">
+                                Aprende inglés, español, francés, alemán y más idiomas con profesores nativos. Clases interactivas y conversacionales.
+                            </p>
+                            <p class="has-text-grey">
+                                <strong>380+ cursos</strong> | Todos los niveles
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 - Desarrollo Personal -->
+                <div class="column is-4">
+                    <div class="card">
+                        <div class="card-content has-text-centered">
+                            <div class="icon-wrapper has-text-link">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="title is-4">Desarrollo Personal</h3>
+                            <p class="content">
+                                Productividad, comunicación efectiva, liderazgo y bienestar. Mejora tus habilidades blandas y alcanza tus metas personales.
+                            </p>
+                            <p class="has-text-grey">
+                                <strong>290+ cursos</strong> | Transforma tu vida
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits Section -->
+            <div class="box has-background-light mt-6">
+                <h3 class="title is-4 has-text-centered mb-5">¿Por qué elegirnos?</h3>
+                <div class="columns">
+                    <div class="column">
+                        <div class="media">
+                            <div class="media-left">
+                                <span class="icon is-large has-text-primary">
+                                    <i class="fas fa-infinity fa-2x"></i>
+                                </span>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-5">Acceso de por vida</p>
+                                <p class="subtitle is-6">Aprende a tu ritmo, cuando quieras</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="media">
+                            <div class="media-left">
+                                <span class="icon is-large has-text-success">
+                                    <i class="fas fa-certificate fa-2x"></i>
+                                </span>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-5">Certificados verificables</p>
+                                <p class="subtitle is-6">Acredita tus nuevas habilidades</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="media">
+                            <div class="media-left">
+                                <span class="icon is-large has-text-info">
+                                    <i class="fas fa-users fa-2x"></i>
+                                </span>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-5">Comunidad activa</p>
+                                <p class="subtitle is-6">Conecta con otros estudiantes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="box has-background-primary mt-5">
+                <div class="columns is-vcentered">
+                    <div class="column">
+                        <h3 class="title is-4 has-text-white">¿Listo para comenzar tu aprendizaje?</h3>
+                        <p class="has-text-white">Únete a miles de estudiantes que ya están transformando sus carreras. Primer mes gratis.</p>
+                    </div>
+                    <div class="column is-narrow">
+                        <a href="#" class="button is-light is-medium">
+                            <span class="icon">
+                                <i class="fas fa-rocket"></i>
+                            </span>
+                            <span>Comenzar Ahora</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer has-background-dark has-text-white">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-4">
+                    <h4 class="title is-5 has-text-white">
+                        <i class="fas fa-graduation-cap"></i> Cursos Online
+                    </h4>
+                    <p class="has-text-grey-light">
+                        La plataforma líder en educación online. Aprende de los mejores instructores del mundo desde cualquier lugar.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#" class="button is-small is-rounded mr-2">
+                            <span class="icon"><i class="fab fa-facebook"></i></span>
+                        </a>
+                        <a href="#" class="button is-small is-rounded mr-2">
+                            <span class="icon"><i class="fab fa-twitter"></i></span>
+                        </a>
+                        <a href="#" class="button is-small is-rounded mr-2">
+                            <span class="icon"><i class="fab fa-instagram"></i></span>
+                        </a>
+                        <a href="#" class="button is-small is-rounded">
+                            <span class="icon"><i class="fab fa-youtube"></i></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="column is-2 is-offset-2">
+                    <h5 class="title is-6 has-text-white">Cursos</h5>
+                    <ul>
+                        <li><a href="#" class="has-text-grey-light">Programación</a></li>
+                        <li><a href="#" class="has-text-grey-light">Diseño</a></li>
+                        <li><a href="#" class="has-text-grey-light">Negocios</a></li>
+                        <li><a href="#" class="has-text-grey-light">Marketing</a></li>
+                    </ul>
+                </div>
+                <div class="column is-2">
+                    <h5 class="title is-6 has-text-white">Compañía</h5>
+                    <ul>
+                        <li><a href="#" class="has-text-grey-light">Sobre Nosotros</a></li>
+                        <li><a href="#" class="has-text-grey-light">Instructores</a></li>
+                        <li><a href="#" class="has-text-grey-light">Carreras</a></li>
+                        <li><a href="#" class="has-text-grey-light">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="column is-2">
+                    <h5 class="title is-6 has-text-white">Soporte</h5>
+                    <ul>
+                        <li><a href="#" class="has-text-grey-light">Centro de Ayuda</a></li>
+                        <li><a href="#" class="has-text-grey-light">Contacto</a></li>
+                        <li><a href="#" class="has-text-grey-light">Términos</a></li>
+                        <li><a href="#" class="has-text-grey-light">Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="has-background-grey">
+            <div class="content has-text-centered has-text-grey-light">
+                <p>
+                    <strong class="has-text-white">Cursos Online</strong> - Tu futuro comienza aquí.
+                </p>
+                <p>
+                    &copy; 2026 Cursos Online. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
