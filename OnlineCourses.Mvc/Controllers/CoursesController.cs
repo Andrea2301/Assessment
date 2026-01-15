@@ -94,7 +94,7 @@ public class CoursesController : Controller
             ? $"courses/{id}/unpublish"
             : $"courses/{id}/publish";
 
-        await _api.PatchAsync(endpoint, new { });
+        await _api.PatchAsync(endpoint);
 
         return RedirectToAction(nameof(Index));
     }

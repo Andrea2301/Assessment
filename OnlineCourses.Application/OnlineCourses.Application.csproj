@@ -4,6 +4,10 @@
     <ProjectReference Include="..\OnlineCourses.Domain\OnlineCourses.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+  </ItemGroup>
+
  
 
   <PropertyGroup>

@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using OnlineCourses.Api;
 using OnlineCourses.Domain.Repositories;
 using OnlineCourses.Infrastructure.Persistence.Data;
 using OnlineCourses.Infrastructure.Persistence.Repositories;
@@ -49,6 +50,8 @@ builder.Services.AddAuthentication("Bearer")
 // Repositories
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<ILessonRepository, LessonRepository>();
+builder.Services.AddScoped<TokenService>();
+
 
 // En Program.cs o Startup.cs
 builder.Services.AddCors(options =>

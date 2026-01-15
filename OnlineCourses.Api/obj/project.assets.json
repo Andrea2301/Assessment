@@ -1184,6 +1184,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
           "OnlineCourses.Domain": "1.0.0"
         },
         "compile": {
