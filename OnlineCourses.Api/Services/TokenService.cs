@@ -29,9 +29,12 @@ public class TokenService
 
         var expires = DateTime.UtcNow.AddMinutes(1);
 
-        Console.WriteLine(
-            $"[JWT] Access token generado | Usuario: {user.Email} | Expira: {expires:HH:mm:ss}"
-        );
+        Console.WriteLine($"""
+                           ACCESS TOKEN GENERADO
+                           Usuario : {user.Email}
+                           Expira  : {expires:HH:mm:ss}
+                           """);
+
 
         var token = new JwtSecurityToken(
             issuer: _config["Jwt:Issuer"],

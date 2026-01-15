@@ -106,14 +106,13 @@ public class AuthController : ControllerBase
         await _context.SaveChangesAsync();
 
         _logger.LogInformation("""
-                               ────────────────────────────────────────
-                                JWT REFRESH
-                               Usuario: {Email}
-                               Hora: {Time}
-                               ────────────────────────────────────────
-                               """,
+                                REFRESH TOKEN EJECUTADO
+                                Usuario : {Email}
+                                Minuto   : {Time}
+                                """,
             user.Email,
-            DateTime.UtcNow.ToString("HH:mm:ss"));
+            DateTime.UtcNow.ToString("mm:ss"));
+
 
         return Ok(new
         {
