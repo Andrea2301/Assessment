@@ -8,6 +8,12 @@ builder.Services.AddControllersWithViews();
 // Servicios personalizados
 builder.Services.AddScoped<ApiClient>();
 builder.Services.AddHttpClient();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ApiClient>();
+builder.Services.AddSession();
+
+
+
 
 // Configuración de sesión
 builder.Services.AddDistributedMemoryCache();
