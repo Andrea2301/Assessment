@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/home/c/RiderProjects/Assessment/OnlineCourses.Mvc/OnlineCourses.Mvc.csproj": {}
+    "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Mvc\\OnlineCourses.Mvc.csproj": {}
   },
   "projects": {
-    "/home/c/RiderProjects/Assessment/OnlineCourses.Domain/OnlineCourses.Domain.csproj": {
+    "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Domain\\OnlineCourses.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/c/RiderProjects/Assessment/OnlineCourses.Domain/OnlineCourses.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Domain\\OnlineCourses.Domain.csproj",
         "projectName": "OnlineCourses.Domain",
-        "projectPath": "/home/c/RiderProjects/Assessment/OnlineCourses.Domain/OnlineCourses.Domain.csproj",
-        "packagesPath": "/home/c/.nuget/packages/",
-        "outputPath": "/home/c/RiderProjects/Assessment/OnlineCourses.Domain/obj/",
+        "projectPath": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Domain\\OnlineCourses.Domain.csproj",
+        "packagesPath": "C:\\Users\\camil\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/c/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\camil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,34 +65,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/c/.dotnet/sdk/9.0.309/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/c/RiderProjects/Assessment/OnlineCourses.Mvc/OnlineCourses.Mvc.csproj": {
+    "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Mvc\\OnlineCourses.Mvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/c/RiderProjects/Assessment/OnlineCourses.Mvc/OnlineCourses.Mvc.csproj",
+        "projectUniqueName": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Mvc\\OnlineCourses.Mvc.csproj",
         "projectName": "OnlineCourses.Mvc",
-        "projectPath": "/home/c/RiderProjects/Assessment/OnlineCourses.Mvc/OnlineCourses.Mvc.csproj",
-        "packagesPath": "/home/c/.nuget/packages/",
-        "outputPath": "/home/c/RiderProjects/Assessment/OnlineCourses.Mvc/obj/",
+        "projectPath": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Mvc\\OnlineCourses.Mvc.csproj",
+        "packagesPath": "C:\\Users\\camil\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Mvc\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/c/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\camil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/home/c/RiderProjects/Assessment/OnlineCourses.Domain/OnlineCourses.Domain.csproj": {
-                "projectPath": "/home/c/RiderProjects/Assessment/OnlineCourses.Domain/OnlineCourses.Domain.csproj"
+              "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Domain\\OnlineCourses.Domain.csproj": {
+                "projectPath": "C:\\Users\\camil\\RiderProjects\\Assessment\\OnlineCourses.Domain\\OnlineCourses.Domain.csproj"
               }
             }
           }
@@ -141,7 +153,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/c/.dotnet/sdk/9.0.309/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

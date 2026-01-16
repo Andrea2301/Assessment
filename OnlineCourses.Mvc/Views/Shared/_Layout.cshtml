@@ -30,17 +30,65 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+    <div id="session-indicator"
+         style="position: fixed; top: 10px; right: 10px;
+            background: #444; color: white;
+            padding: 6px 12px; border-radius: 6px;
+            font-size: 14px;">
+        Sesión activa: <span id="session-time">60</span>s
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - OnlineCourses.Mvc - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    <div id="toast"
+         style="display:none; position: fixed; bottom: 15px; right: 15px;
+            background: #333; color: white;
+            padding: 10px 15px; border-radius: 6px;">
+    </div>
+
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2026 - OnlineCourses.Mvc - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+<script>
+    let sessionTime = 60;
+    const sessionSpan = document.getElementById("session-time");
+
+    function startCountdown() {
+        setInterval(() => {
+            sessionTime--;
+            sessionSpan.textContent = sessionTime;
+
+            if (sessionTime <= 0) {
+                alert("Tu sesión expiró. Debes iniciar sesión nuevamente.");
+                window.location.href = " /Login";
+            }
+        }, 1000);
+    }
+
+    function resetSessionTimer(seconds) {
+        sessionTime = seconds;
+        sessionSpan.textContent = sessionTime;
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.style.display = "block";
+
+        setTimeout(() => {
+            toast.style.display = "none";
+        }, 3000);
+    }
+
+    startCountdown();
+</script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,3 +1,4 @@
+using System.Net;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using OnlineCourses.Mvc.Models;
@@ -140,5 +141,8 @@ public class ApiClient
 
         return response.IsSuccessStatusCode;
     }
+    
+   
+
 
 }
