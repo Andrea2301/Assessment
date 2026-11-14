@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/OnlineCourses.Api.props" />
-</Project>
